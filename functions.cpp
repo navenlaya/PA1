@@ -2,6 +2,10 @@
 
 Game::Game(){}
 
+Game::~Game() {}
+
+
+
 void Game::run()
 {
     returntoMenu = "Y";
@@ -23,6 +27,7 @@ void Game::run()
             break;
             case 4:
             // Add Commands
+            addCommands();
             break;
             case 5:
             //Remove Commands
@@ -68,6 +73,38 @@ void Game::getChoice()
 void Game::displayRules()
 {
     cout << "---- RULES ----" << endl;
+    
+}
+
+void Game::addCommands()
+{
+    string key;
+    string value;
+    int points;
+
+    cout << "Enter new command name:";
+    cin >> key;
+    cin.ignore();
+
+    cout << "Enter description:";
+    cin >> value;
+
+    cout << "Enter points:";
+    cin >> points;
+
+    ofstream outputFile("commands.csv", ios::app);
+
+    if (outputFile.is_open()) 
+    {
+        outputFile << key << ",\"" << value << "\"," << points << endl;
+        outputFile.close();
+        cout << "Command added." << endl;
+    } 
+    else 
+    {
+        cout << "Error" << endl;
+    }
+
     
 }
 
