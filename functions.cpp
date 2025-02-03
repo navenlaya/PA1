@@ -8,6 +8,7 @@ Game::~Game() {}
 
 void Game::run()
 {
+    loadCommands();
     returntoMenu = "Y";
     while(returntoMenu == "Y")
     {
@@ -51,6 +52,38 @@ void Game::run()
 
 }
 
+void Game::loadCommands()
+{
+    ifstream inputFile("commands.csv");
+
+    if (inputFile.is_open())
+    {
+        string line;
+        while (getline(inputFile, line))
+        {
+            stringstream ss(line);
+            string key, value, points_str;
+            int points;
+
+            getline(ss, key, ',');
+            getline(ss, value, ',');
+            getline(ss, points_str);
+
+             points = stoi(points_str);  
+
+            Data newCommand(key, value, points);
+            commandList.insertAtFront(newCommand); 
+
+        }
+
+        inputFile.close();
+    }
+    else
+    {
+        cout << "Error opening file for loading commands." << endl;
+    }
+}
+
 void Game::mainMenu()
 {
     cout << "---- MAIN MENU ----" << endl;
@@ -92,6 +125,9 @@ void Game::addCommands()
     cout << "Enter points:";
     cin >> points;
 
+    Data newCommand(key, value, points);
+    commandList.insertAtFront(newCommand);
+
     ofstream outputFile("commands.csv", ios::app);
 
     if (outputFile.is_open()) 
@@ -102,7 +138,7 @@ void Game::addCommands()
     } 
     else 
     {
-        cout << "Error" << endl;
+        cout << "Error opening file." << endl;
     }
 
     
@@ -110,17 +146,8 @@ void Game::addCommands()
 
 void Game::displayCommands()
 {
-    ifstream inputFile("commands.csv");
 
-    cout << "Commands, Description, Points" << endl;
-
-    string line;
-    while(getline(inputFile, line))
-    {
-        cout<<line<<endl;
-    }
-    
-    inputFile.close();
+    commandList.print();
 
 }
 

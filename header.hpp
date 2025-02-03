@@ -7,7 +7,7 @@
 #include <forward_list>
 #include <iterator>
 #include <fstream>
-
+#include <sstream>
 
 using namespace std;
 
@@ -20,6 +20,12 @@ class Data
 
     Data(string command, string description, int points) : key(command), value(description), points(points) {}
 
+
+   
+    friend ostream& operator<<(ostream& os, const Data& data) {
+        os << data.key << ", " << data.value<< ", " << data.points;
+        return os;
+    }
 
 
 };
@@ -57,6 +63,16 @@ class List
         head = newNode;
     }
 
+    void print() const
+    {
+        Node<T>* temp = head;
+        while(temp)
+        {
+            cout<< temp->data << endl;
+            temp = temp -> next;
+        }
+    }
+
     private:
     Node<T>* head;
    
@@ -86,8 +102,11 @@ class Game
 
     void addCommands();
 
+    void loadCommands();
+
     int menuChoice;
     string returntoMenu;
+    List<Data> commandList;
 };
 
 

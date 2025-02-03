@@ -4,27 +4,28 @@ cd,"Change current working directory",1
 mkdir,"Create a directory",1
 rmdir,"Delete a directory",1
 rm,"Delete a file",1
-cp,"Copy",1
-mv,"Move a file",1
-ssh,"",2
-scp,"",2
-man,"",2
-g++,"",2
-gcc,"",2
-make,"",2
-ps,"",2
-kill,"",2
-top,"",2
-who,"",3
-chmod,"",3
-cat,"",3
-alias,"",3
-chown,"",3
-df,"",3
-grep,"",3
-echo,"",2
-find,"",4
-clear,"",1
-diff,"",2
-env,"",4
-free,"",3
+cp,"Copy a file or directory",1
+mv,"Move or rename a file or directory",1
+ssh,"Secure shell remote login",2
+scp,"Secure copy files between hosts",2
+man,"Display manual pages for a command",2
+g++,"GNU C++ compiler",2
+gcc,"GNU C compiler",2
+make,"Build automation tool",2
+ps,"Report a snapshot of current processes",2
+kill,"Terminate a process by PID",2
+top,"Display system tasks and processes",2
+who,"Display who is logged in",3
+chmod,"Change file access permissions",3
+cat,"Concatenate and display file contents",3
+alias,"Create command aliases",3
+chown,"Change file owner and group",3
+df,"Display disk space usage",3
+grep,"Search for patterns in files",3
+echo,"Display a line of text or variable value",2
+find,"Search for files in a directory hierarchy",4
+clear,"Clear the terminal screen",1
+diff,"Compare files line by line",2
+env,"Display or modify environment variables",4
+free,"Display memory usage",3
+ns,"description",1
