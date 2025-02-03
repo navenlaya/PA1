@@ -28,4 +28,3 @@ clear,"Clear the terminal screen",1
 diff,"Compare files line by line",2
 env,"Display or modify environment variables",4
 free,"Display memory usage",3
-ns,"description",1
